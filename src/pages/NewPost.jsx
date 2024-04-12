@@ -12,7 +12,7 @@ const AddPostPage = ({ addPost }) => {
 	};
 
 	return (
-		<div className="card">
+		<div>
 			<h2>Ajouter un poste</h2>
 			<form onSubmit={handleSubmit}>
 				<label>
@@ -26,7 +26,7 @@ const AddPostPage = ({ addPost }) => {
 				<label>
 					Contenu :
 					<textarea
-						value={content}
+						value={body}
 						onChange={(e) => setContent(e.target.value)}
 					></textarea>
 				</label>
