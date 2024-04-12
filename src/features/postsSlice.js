@@ -42,6 +42,16 @@ export const fetchPostById = createAsyncThunk(
 	}
 );
 
+export const addNewPost = createAsyncThunk("posts/addNewPost", async (post) => {
+	const response = await axios.post(
+		"https://jsonplaceholder.typicode.com/posts",
+		post
+	);
+	const newPost = response.data;
+
+	return newPost;
+});
+
 let id = 101;
 
 const postsSlice = createSlice({
@@ -98,19 +108,25 @@ const postsSlice = createSlice({
 				state.error = action.error.message;
 			});
 
-		/* builder
+		builder
 			.addCase(addNewPost.pending, (state) => {
 				state.status = "loading";
 			})
 			.addCase(addNewPost.fulfilled, (state, action) => {
 				state.status = "succeeded";
 				state.posts.push(action.payload);
+				state.post = {
+					title: "",
+					body: "",
+					userId: 1,
+					id: id++,
+				};
 			})
 			.addCase(addNewPost.rejected, (state, action) => {
 				console.error("Failed to add new post: ", action.error.message);
 				state.status = "failed";
 				state.error = action.error.message;
-			}); */
+			});
 	},
 });
 
