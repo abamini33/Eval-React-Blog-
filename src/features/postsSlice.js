@@ -8,6 +8,18 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
 	return response.data;
 });
 
+export const fetchPostById = createAsyncThunk(
+	"posts/fetchPostById",
+	async (data) => {
+		const response = await axios.get(
+			`https://jsonplaceholder.typicode.com/posts/${data}`
+		);
+		console.log("data", data);
+		console.log("response", response.data);
+		return response.data;
+	}
+);
+
 let id = 101;
 
 const postsSlice = createSlice({
@@ -47,6 +59,23 @@ const postsSlice = createSlice({
 				state.error = action.error.message;
 			});
 
+		builder
+			.addCase(fetchPostById.pending, (state) => {
+				state.status = "loading";
+			})
+			.addCase(fetchPostById.fulfilled, (state, action) => {
+				state.status = "succeeded";
+				state.post = action.payload;
+			})
+			.addCase(fetchPostById.rejected, (state, action) => {
+				console.error(
+					"Failed to fetch post by id: ",
+					action.error.message
+				);
+				state.status = "failed";
+				state.error = action.error.message;
+			});
+
 		/* builder
 			.addCase(addNewPost.pending, (state) => {
 				state.status = "loading";
@@ -68,3 +97,4 @@ export const { setPostValue } = postsSlice.actions;
 export default postsSlice.reducer;
 
 export const selectAllPosts = (state) => state.posts.posts;
+export const selectPost = (state) => state.posts.post;
