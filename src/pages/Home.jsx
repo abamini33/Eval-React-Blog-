@@ -1,17 +1,17 @@
 import PostItem from "../components/PostItem";
-import { useEffect } from "react";
+/* import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts, selectAllPosts } from "../features/postsSlice";
+import { fetchPosts, selectAllPosts } from "../features/postsSlice"; */
 
-const HomePage = () => {
-	const dispatch = useDispatch();
+const HomePage = ({ posts }) => {
+	/* const dispatch = useDispatch();
 	const posts = useSelector(selectAllPosts);
 
 	console.log("postsCLIENT", posts);
 
 	useEffect(() => {
 		dispatch(fetchPosts());
-	}, [dispatch]);
+	}, [dispatch]); */
 
 	return (
 		<div>

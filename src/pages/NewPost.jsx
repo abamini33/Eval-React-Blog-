@@ -1,19 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-	addPost,
-	selectAllPosts,
-	selectPost,
-	setPostValue,
-} from "../features/postsSlice";
+import { addPost, selectPost, setPostValue } from "../features/postsSlice";
 
 const NewPost = () => {
 	const dispatch = useDispatch();
 
 	const post = useSelector(selectPost);
-	const posts = useSelector(selectAllPosts);
-
-	console.log("postsCLIENT", posts);
 
 	const { title, body } = post;
 

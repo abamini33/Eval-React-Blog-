@@ -62,6 +62,7 @@ const postsSlice = createSlice({
 			body: "",
 			userId: 1,
 			id: id++,
+			author: "Leanne Graham",
 		},
 		posts: [],
 		status: "idle",
@@ -113,9 +114,8 @@ const postsSlice = createSlice({
 				state.status = "loading";
 			})
 			.addCase(addPost.fulfilled, (state, action) => {
-				console.log("action.payload", action.payload);
 				state.status = "succeeded";
-				state.posts = [...state.posts, action.payload];
+				state.posts.unshift(action.payload);
 				state.post = {
 					title: "",
 					body: "",
