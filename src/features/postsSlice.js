@@ -5,7 +5,22 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
 	const response = await axios.get(
 		"https://jsonplaceholder.typicode.com/posts"
 	);
-	return response.data;
+	const postsData = response.data;
+
+	const usersResponse = await axios.get(
+		"https://jsonplaceholder.typicode.com/users"
+	);
+	const usersData = usersResponse.data;
+
+	const posts = postsData.map((post) => {
+		const user = usersData.find((user) => user.id === post.userId);
+		return {
+			...post,
+			author: user.name,
+		};
+	});
+
+	return posts;
 });
 
 export const fetchPostById = createAsyncThunk(
@@ -14,9 +29,16 @@ export const fetchPostById = createAsyncThunk(
 		const response = await axios.get(
 			`https://jsonplaceholder.typicode.com/posts/${data}`
 		);
-		console.log("data", data);
-		console.log("response", response.data);
-		return response.data;
+		const post = response.data;
+
+		const userResponse = await axios.get(
+			`https://jsonplaceholder.typicode.com/users/${post.userId}`
+		);
+		const user = userResponse.data;
+
+		post.author = user.name;
+
+		return post;
 	}
 );
 

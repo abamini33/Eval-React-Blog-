@@ -7,7 +7,7 @@ const PostItem = ({ post }) => {
 			<Link to={`/post/${post.id}`}>
 				<h2>{post.title}</h2>
 				<p>{post.body}</p>
-				{/* <p>Auteur : {post.author}</p> */}
+				<p>Auteur : {post.author}</p>
 			</Link>
 		</div>
 	);
