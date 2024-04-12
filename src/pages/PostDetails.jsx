@@ -9,6 +9,7 @@ import {
 	selectAllComments,
 	selectComment,
 } from "../features/commentsSlice";
+import CommentForm from "../components/CommentForm";
 
 const PostDetailPage = () => {
 	const dispatch = useDispatch();
@@ -18,16 +19,6 @@ const PostDetailPage = () => {
 	const post = useSelector(selectPost);
 	const comments = useSelector(selectAllComments);
 
-	const comment = useSelector(selectComment);
-
-	const handleAddComment = () => {
-		const newComment = {
-			...comment,
-			postId: parseFloat(id),
-		};
-		dispatch(addComment(newComment));
-	};
-
 	useEffect(() => {
 		dispatch(fetchPostById(id));
 		dispatch(fetchComments(id));
@@ -35,15 +26,20 @@ const PostDetailPage = () => {
 
 	return (
 		<div className="card">
-			<h2>{post.title}</h2>
-			<p>{post.body}</p>
-			<p>Auteur : {post.author}</p>
-			<h3>Commentaires</h3>
-			{comments.map((comment) => (
-				<CommentItem key={comment.id} comment={comment} />
-			))}
+			<div>
+				<h1>Post:</h1>
+				<h2>{post.title}</h2>
+				<p>{post.body}</p>
+				<p>Auteur : {post.author}</p>
+			</div>
+			<div>
+				<h3>Commentaires</h3>
+				{comments.map((comment) => (
+					<CommentItem key={comment.id} comment={comment} />
+				))}
+			</div>
 
-			<button onClick={handleAddComment}>Add comment</button>
+			<CommentForm id={id} />
 		</div>
 	);
 };

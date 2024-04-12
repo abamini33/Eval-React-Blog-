@@ -7,6 +7,8 @@ const HomePage = () => {
 	const dispatch = useDispatch();
 	const posts = useSelector(selectAllPosts);
 
+	console.log("postsCLIENT", posts);
+
 	useEffect(() => {
 		dispatch(fetchPosts());
 	}, [dispatch]);

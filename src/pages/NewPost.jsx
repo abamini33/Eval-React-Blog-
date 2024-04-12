@@ -1,33 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	addPost,
+	selectAllPosts,
+	selectPost,
+	setPostValue,
+} from "../features/postsSlice";
 
-const AddPostPage = ({ addPost }) => {
-	const [title, setTitle] = useState("");
-	const [content, setContent] = useState("");
+const NewPost = () => {
+	const dispatch = useDispatch();
+
+	const post = useSelector(selectPost);
+	const posts = useSelector(selectAllPosts);
+
+	console.log("postsCLIENT", posts);
+
+	const { title, body } = post;
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		dispatch(setPostValue({ name, value }));
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		addPost({ title, content });
-		setTitle("");
-		setContent("");
+		dispatch(addPost(post));
 	};
 
 	return (
 		<div>
-			<h2>Ajouter un poste</h2>
+			<h1>Ajouter un poste</h1>
 			<form onSubmit={handleSubmit}>
 				<label>
 					Titre :
 					<input
 						type="text"
+						name="title"
 						value={title}
-						onChange={(e) => setTitle(e.target.value)}
+						onChange={handleChange}
 					/>
 				</label>
 				<label>
 					Contenu :
 					<textarea
+						name="body"
 						value={body}
-						onChange={(e) => setContent(e.target.value)}
+						onChange={handleChange}
 					></textarea>
 				</label>
 				<button type="submit">Ajouter</button>
@@ -36,4 +54,4 @@ const AddPostPage = ({ addPost }) => {
 	);
 };
 
-export default AddPostPage;
+export default NewPost;

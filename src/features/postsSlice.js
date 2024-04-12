@@ -42,7 +42,7 @@ export const fetchPostById = createAsyncThunk(
 	}
 );
 
-export const addNewPost = createAsyncThunk("posts/addNewPost", async (post) => {
+export const addPost = createAsyncThunk("posts/addPost", async (post) => {
 	const response = await axios.post(
 		"https://jsonplaceholder.typicode.com/posts",
 		post
@@ -109,12 +109,13 @@ const postsSlice = createSlice({
 			});
 
 		builder
-			.addCase(addNewPost.pending, (state) => {
+			.addCase(addPost.pending, (state) => {
 				state.status = "loading";
 			})
-			.addCase(addNewPost.fulfilled, (state, action) => {
+			.addCase(addPost.fulfilled, (state, action) => {
+				console.log("action.payload", action.payload);
 				state.status = "succeeded";
-				state.posts.push(action.payload);
+				state.posts = [...state.posts, action.payload];
 				state.post = {
 					title: "",
 					body: "",
@@ -122,7 +123,7 @@ const postsSlice = createSlice({
 					id: id++,
 				};
 			})
-			.addCase(addNewPost.rejected, (state, action) => {
+			.addCase(addPost.rejected, (state, action) => {
 				console.error("Failed to add new post: ", action.error.message);
 				state.status = "failed";
 				state.error = action.error.message;

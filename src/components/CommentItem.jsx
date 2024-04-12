@@ -1,10 +1,12 @@
 import React from "react";
 
 const CommentItem = ({ comment }) => {
+	const { body, name } = comment;
+
 	return (
 		<div>
-			<p>{comment.text}</p>
-			<p>Par : {comment.author}</p>
+			<p>{body}</p>
+			<p>Auteur : {name}</p>
 		</div>
 	);
 };
