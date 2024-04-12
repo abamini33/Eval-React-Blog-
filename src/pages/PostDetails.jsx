@@ -16,7 +16,7 @@ const PostDetailPage = () => {
 	}, [dispatch, id]);
 
 	return (
-		<div>
+		<div className="card">
 			<h2>{post.title}</h2>
 			<p>{post.body}</p>
 			{/* <p>Autheur : {post.author}</p> */}

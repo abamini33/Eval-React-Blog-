@@ -12,7 +12,7 @@ const AddPostPage = ({ addPost }) => {
 	};
 
 	return (
-		<div>
+		<div className="card">
 			<h2>Ajouter un poste</h2>
 			<form onSubmit={handleSubmit}>
 				<label>
