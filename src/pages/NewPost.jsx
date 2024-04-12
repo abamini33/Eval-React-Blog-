@@ -26,7 +26,7 @@ const AddPostPage = ({ addPost }) => {
 				<label>
 					Contenu :
 					<textarea
-						value={content}
+						value={body}
 						onChange={(e) => setContent(e.target.value)}
 					></textarea>
 				</label>

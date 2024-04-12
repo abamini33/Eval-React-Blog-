@@ -5,38 +5,107 @@
 	text-align: center;
 }
 
-.logo {
-	height: 6em;
-	padding: 1.5em;
-	will-change: filter;
-	transition: filter 300ms;
-}
-.logo:hover {
-	filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-	filter: drop-shadow(0 0 2em #61dafbaa);
+/************************************
+ * Styles pour l'application principale
+ ************************************/
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #42456d;
 }
 
-@keyframes logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+main {
+	padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-	a:nth-of-type(2) .logo {
-		animation: logo-spin infinite 20s linear;
-	}
+/************************************
+ * Styles pour la page d'accueil
+ ************************************/
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
 }
 
 .card {
-	padding: 2em;
+	background-color: #43248d;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(20, 4, 4, 0.1);
+	padding: 20px;
+	margin-bottom: 20px;
 }
 
-.read-the-docs {
-	color: #888;
+.card h2 {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.card p {
+	font-size: 16px;
+	line-height: 1.5;
+	margin-bottom: 10px;
+}
+
+/************************************
+ * Styles pour la page du formulaire d'ajout de post
+ ************************************/
+
+form {
+	margin-bottom: 10px;
+}
+
+label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+input[type="text"],
+textarea {
+	width: 80%;
+	padding: 15px;
+	margin: 10px;
+	border-radius: 4px;
+	border: 1px solid #fffdfd;
+}
+
+button[type="submit"] {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #036ddd;
+	color: #fdf6f6;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+/************************************
+ * Styles pour la page des détails du post
+ ************************************/
+
+h2 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	color: #fffdfd;
+}
+
+p {
+	font-size: 16px;
+	line-height: 1.5;
+	margin-bottom: 10px;
+	color: #fffdfd;
+}
+
+h3 {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
 }
