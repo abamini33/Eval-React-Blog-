@@ -6,19 +6,19 @@ import NewPost from "./pages/NewPost";
 import NavBar from "./components/NavBar";
 
 const App = () => {
-	return (
-		<>
-			<NavBar />
+    return (
+        <>
+            <NavBar />
 
-			<main>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/post/:id" element={<PostDetails />} />
-					<Route path="/new-post" element={<NewPost />} />
-				</Routes>
-			</main>
-		</>
-	);
+            <main>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/post/:id" element={<PostDetails />} />
+                    <Route path="/new-post" element={<NewPost />} />
+                </Routes>
+            </main>
+        </>
+    );
 };
 
 export default App;
