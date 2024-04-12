@@ -5,7 +5,7 @@ const PostItem = ({ post }) => {
         <div>
             <h2>{post.title}</h2>
             <p>{post.content}</p>
-            <p>Autheur : {post.author}</p>
+            <p>Auteur : {post.author}</p>
         </div>
     );
 };
